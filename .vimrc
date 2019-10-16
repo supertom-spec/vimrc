@@ -72,6 +72,10 @@ set wildmode=full
 " ------------------------------------------------
 "  4.Keyboard Shortcuts
 " ------------------------------------------------
+nmap <TAB> V>
+nmap <S-TAB> V<
+vmap <TAB> >gv
+vmap <S-TAB> <gv
 vmap <C-C> :w !pbcopy<CR><CR>
 map <C-H> :%!xxd<CR>
 map <C-J> :%!xxd -r<CR>
