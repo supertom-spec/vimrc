@@ -100,6 +100,15 @@ func! CompileGcc()
 	if search("gmp\.h") != 0
 		let compileflag .= " -lgmp "
 	endif
+    if search("openssl") != 0
+        let compileflag .= " -lcrypto"
+    endif
+    if search("GDBDEBUG") != 0
+        let compileflag .= " -g"
+    endif
+    if search("DISABLEWFORMAT") != 0
+        let compileflag .= " -Wformat=0"
+    endif
 	exec compilecmd." % ".compileflag
 endfunc
 
@@ -154,6 +163,9 @@ autocmd BufNewFile *.pl call SetPlTitle()
 func SetCTitle()
     call setline(1, "#include <stdio.h>")
     call append(line("."), "#include <stdlib.h>")
+    call append(line(".")+1, "")
+    call append(line(".")+2, "#define DISABLEWFORMAT")
+    call append(line(".")+3, "#define GDBDEBUG")
 endfunc
 func SetCppTitle()
     call setline(1, "#include <iostream>")
