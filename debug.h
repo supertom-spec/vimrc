@@ -17,17 +17,14 @@ void debug_hex(const char *msg, BYTE* addr, int n) {
         return;
     }
     printf("[+] Memory of 0x%X (%s): \n", addr, msg);
-    printf("0000:  ");
+    printf("0000  ");
     for (int i = 0; i < n; i++) {
-        printf("%02x", *(addr+i));
-        if ( (i+1) % 2 == 0 ) {
-            printf(" ");
-        }
+        printf("%02x ", *(addr+i));
         if ( (i+1) % 8 == 0 ) {
             printf("  ");
         }
         if ( (i+1) % 16 == 0 ) {
-            printf("\n%04X:  ", i+1);
+            printf("\n%04X  ", i+1);
         }
     }
     printf("\n");
